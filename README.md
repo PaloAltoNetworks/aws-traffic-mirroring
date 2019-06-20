@@ -1,6 +1,21 @@
 # Using VM-Series with AWS Traffic Mirroring
-This repository provides a sample firewall configuration that you can import into VM-Series. This sample configuration enables the VXLAN tunnel content inspection (TCI) feature to receive packets sent by the AWS Traffic Mirroring service. This will allow you to get [visibility, and detect and respond](https://live.paloaltonetworks.com) to attacks by sending copies of all packets sent/received by your AWS instances to VM-Series without putting the firewall inline. Putting the VM-Series inline with the traffic flow will allow you actually prevent attacks in real-time. You can also use this capability to run a security lifecycle report (SLR) on your public cloud deployment. 
+This repository provides a sample firewall configuration that you can import into VM-Series. This sample configuration enables the VXLAN tunnel content inspection (TCI) feature to receive packets sent by the AWS Traffic Mirroring service. This will allow you to get [visibility, and detect and respond](https://live.paloaltonetworks.com/aws) to attacks by sending copies of all packets sent/received by your AWS instances to VM-Series without putting the firewall inline. Putting the VM-Series inline with the traffic flow will allow you actually prevent attacks in real-time. You can also use this capability to run a security lifecycle report (SLR) on your public cloud deployment. 
 
+## Prerequisites
+1. Documentation 
+  1. AWS Traffic Mirroring
+  1. [PAN-OS VXLAN TCI](https://docs.paloaltonetworks.com/pan-os/9-0/pan-os-new-features/networking-features/vxlan-tunnel-content-inspection.html)
+1. PAN-OS 9.0 or higher is required for VXLAN TCI feature
 
 ## How To
 Steps for setting up AWS Traffic Mirroring
+1. Deploy and configure VM-Series from [AWS Marketplace](https://aws.amazon.com/marketplace/seller-profile?id=0ed48363-5064-4d47-b41b-a53f7c937314). Use BYOL edition if you have a trial/evaluation/full license, or use the pre-licensed PAYG options. 
+2. Follow [documentation](https://docs.paloaltonetworks.com/vm-series/7-1/vm-series-deployment/set-up-the-vm-series-firewall-in-aws/launch-the-vm-series-firewall-in-aws.html) deploy a 3 ENI setup of VM-Series and do the basic setup to configure a password (up to Step 5 in documentation link).
+3. Import the sample configuration file (aws-mirroring-sample.xml) from the repository into VM-Series. Set the password (Device > Setup > Operations > Import). 
+4. Load the imported configuration.
+5. Commit the configuration. 
+6. Follow AWS Traffic Mirroring steps to send traffic from any of your instances to the Untrust ENI of VM-Series.
+7. Check the Monitor tab in VM-Series to see the traffic sent.
+8. Customize security policies to match your use case.
+9. Enable [Log Filtering](https://docs.paloaltonetworks.com/pan-os/8-0/pan-os-new-features/management-features/selective-log-forwarding-based-on-log-attributes) to find high or critical level items, or specific attacks.
+10. Enable a webhook also known as [Action-Oriented Log Forwarding using HTTP](https://docs.paloaltonetworks.com/pan-os/8-0/pan-os-new-features/management-features/action-oriented-log-forwarding-using-http) to trigger an action: create a service desk ticket, or launch an AWS Lambda function to quarrantine. 
