@@ -3,7 +3,7 @@ This repository provides a sample firewall configuration that you can import int
 
 ## Prerequisites
 1. Read details of [AWS VPC Traffic Mirroring](https://aws.amazon.com/blogs/aws/new-vpc-traffic-mirroring/)
-1. Read an overview of use cases of how [VM-Series works with Traffic Mirroring] (https://blog.paloaltonetworks.com/2019/06/cloud-see-unseen-aws-mirrored-traffic-vm-series/)
+1. Read an overview of use cases of how [VM-Series works with Traffic Mirroring](https://blog.paloaltonetworks.com/2019/06/cloud-see-unseen-aws-mirrored-traffic-vm-series/)
 1. PAN-OS 9.0 or higher is required. Mirrored packets are sent by AWS in a VXLAN encapsulated tunnel. This can be handled using the [PAN-OS VXLAN TCI](https://docs.paloaltonetworks.com/pan-os/9-0/pan-os-new-features/networking-features/vxlan-tunnel-content-inspection.html) feature. 
 
 ## How To
