@@ -18,3 +18,5 @@ Steps for setting up AWS VPC Traffic Mirroring
 8. Customize security policies to match your use case.
 9. Enable [Log Filtering](https://docs.paloaltonetworks.com/pan-os/8-0/pan-os-new-features/management-features/selective-log-forwarding-based-on-log-attributes) to find high or critical level items, or specific attacks.
 10. Enable a webhook also known as [Action-Oriented Log Forwarding using HTTP](https://docs.paloaltonetworks.com/pan-os/8-0/pan-os-new-features/management-features/action-oriented-log-forwarding-using-http) to trigger an action: create a service desk ticket, or launch an AWS Lambda function to quarrantine. 
+
+For scaled out deployments and high availability: You can deploy 2 or more instances of VM-Series behind the the [NLB with UDP load balancing](https://aws.amazon.com/blogs/aws/new-udp-load-balancing-for-network-load-balancer/).
