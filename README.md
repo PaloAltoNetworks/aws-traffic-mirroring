@@ -19,4 +19,8 @@ Steps for setting up AWS VPC Traffic Mirroring
 9. Enable [Log Filtering](https://docs.paloaltonetworks.com/pan-os/8-0/pan-os-new-features/management-features/selective-log-forwarding-based-on-log-attributes) to find high or critical level items, or specific attacks.
 10. Enable a webhook, also known as [Action-Oriented Log Forwarding using HTTP](https://docs.paloaltonetworks.com/pan-os/8-0/pan-os-new-features/management-features/action-oriented-log-forwarding-using-http), to trigger an action: create a service desk ticket, or launch an AWS Lambda function to quarrantine. 
 
-For scaled out deployments and high availability: You can deploy 2 or more instances of VM-Series behind the the [NLB with UDP load balancing](https://aws.amazon.com/blogs/aws/new-udp-load-balancing-for-network-load-balancer/).
+## Scale Out using NLB
+For scaled out deployments and high availability: You can deploy 2 or more instances of VM-Series behind the the [NLB with UDP load balancing](https://aws.amazon.com/blogs/aws/new-udp-load-balancing-for-network-load-balancer/). In this setup you can:
+1. Setup two or more instances of VM-Series behind the NLB with UDP listener on port 4789. The Untrust (eth1 or E1/1) of the firewall would be in the backend pool of NLB.
+1. Enable HTTP on [Management Profile](https://docs.paloaltonetworks.com/pan-os/8-0/pan-os-admin/networking/configure-interfaces/use-interface-management-profiles-to-restrict-access) on the Untrust interface of the VM-Series firewalls. Enable NLB for health monitoring on port 80. The firewall will now respond to the health probes while also processing the mirrored traffic. 
+1. Setup AWS VPC traffic mirroring to send the mirrored packets to the NLB frontend/VIP.
