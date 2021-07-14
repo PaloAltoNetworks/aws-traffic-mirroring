@@ -1,3 +1,11 @@
+Gallery (https://gallery.pan.dev/) is a separate forum used to appropriately structure and organize repositories. 
+Easier method of searching Repositories and maintaining each Repository.
+
+Following Repository is also available in (https://gallery.pan.dev/). Using VM-Series with AWS VPC Traffic Mirroring
+[PaloAltoNetworks/aws-traffic-mirroring](https://github.com/PaloAltoNetworks/aws-traffic-mirroring)
+
+
+
 # Using VM-Series with AWS VPC Traffic Mirroring
 This repository provides a sample firewall configuration that you can import into VM-Series. The sample configuration allows the fireall to receive packets sent by the AWS VPC Traffic Mirroring service. This will allow you to get application visibility, and detect and respond to attacks by sending a copy of all packets sent/received by your AWS instances to VM-Series without putting the firewall inline with the traffic. Putting the VM-Series inline with the traffic flow will allow you actually prevent attacks in real-time; traffic mirroring provides an alternative option without real-time inline protection. You can also use mirroring to run a security lifecycle report (SLR) on your public cloud deployment. And, for scaled out deployments you can deploy multiple VM-Series instances behind the AWS NLB with UDP load balancing.
 
